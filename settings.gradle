@@ -1,0 +1,4 @@
+rootProject.name = 'javacafe-spring-security-sample'
+
+include 'net.javacafe.chickenshop-base'
+
