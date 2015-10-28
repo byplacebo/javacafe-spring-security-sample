@@ -1,4 +1,4 @@
-package net.javacafe.gaebal.controll;
+package net.javacafe.gaebal.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
