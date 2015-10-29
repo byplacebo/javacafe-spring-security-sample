@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
    }
     dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.7.RELEASE'
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE"
     }
 }
 
@@ -13,9 +13,18 @@ apply plugin: 'war'
 apply plugin: 'spring-boot'
 
 sourceCompatibility = 1.8
-version = '1.0'
+targetCompatibility = 1.8
+
+
+group = 'net.javacafe'
+version = '1.0.0'
+
+war {
+    baseName = 'gaebal'
+}
 
 repositories {
+    jcenter()
     mavenCentral()
 }
 
@@ -24,10 +33,10 @@ configurations {
 }
 
 dependencies {
+    compile 'org.slf4j:slf4j-api'
     compile 'org.springframework.boot:spring-boot-starter-web'
-    compile 'org.springframework.boot:spring-boot-starter-test'
-    compile 'javax.cervlet:jstl:1.2'
+    compile 'javax.servlet:jstl:1.2'
+
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper'
-            ''
 }

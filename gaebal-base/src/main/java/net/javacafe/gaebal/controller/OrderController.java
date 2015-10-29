@@ -10,17 +10,17 @@ import org.springframework.web.servlet.ModelAndView;
  * @since 2015.10.28
  */
 @Controller
-public class HelloWorldController {
+public class OrderController {
 
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    @RequestMapping(value = "/order", method = RequestMethod.GET)
     public ModelAndView hello() {
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("hello");
+        mav.setViewName("order");
 
-        String str = "Hello World!";
+        String str = "계발자 주문 페이지";
         mav.addObject("message", str);
 
         return mav;
     }
-
 }
+
