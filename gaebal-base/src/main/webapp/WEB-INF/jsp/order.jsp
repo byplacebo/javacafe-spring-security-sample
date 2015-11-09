@@ -9,35 +9,52 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/bootstrap-table.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/bootstrap-table.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/locale/bootstrap-table-zh-CN.min.js"></script>
 </head>
 <body>
 
 <div class="container">
     <h2>계발자 주문 페이지</h2>
     <p>계발자에서 치킨을 주문하고자 하시는 분은 하단에 주문 내역을 추가하여 주시기 바랍니다.</p>
-    <table class="table table-striped">
+    <div id="toolbar">
+        <button id="button" class="btn btn-default">주문하기</button>
+    </div>
+    <table id="table"
+           data-toolbar="#toolbar"
+           class="table table-striped"
+           datasrc="/json/orders.json">
         <thead>
         <tr>
-            <th>주문일시</th>
-            <th>주문자</th>
-            <th>주소</th>
-            <th>연락처</th>
-            <th>주문내용</th>
+            <th data-field="datetime">주문일시</th>
+            <th data-field="name">주문자</th>
+            <th data-field="address">주소</th>
+            <th data-field="cellphone">연락처</th>
+            <th data-field="order">주문내용</th>
         </tr>
         </thead>
-        <tbody>
-        <c:forEach var="order" items="${orders}">
-        <tr>
-            <td>${order.datetime}</td>
-            <td>${order.name}</td>
-            <td>${order.address}</td>
-            <td>${order.cellphone}</td>
-            <td>${order.order}</td>
-        </tr>
-        </c:forEach>
-        </tbody>
     </table>
-</div>
 
+</div>
+<script>
+    var $table = $('#table'), $button = $('#button');
+
+    $(function () {
+        $button.click(function () {
+            var randomId = 100 + ~~(Math.random() * 100);
+            $table.bootstrapTable('insertRow', {
+                index: 1,
+                row: {
+                    datetime: randomId,
+                    name: 'Item ' + randomId,
+                    address: 'Item ' + randomId,
+                    cellphone: 'Item ' + randomId,
+                    order: '$' + randomId
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
