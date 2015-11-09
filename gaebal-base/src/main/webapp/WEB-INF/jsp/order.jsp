@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -17,14 +17,17 @@
 
 <div class="container">
     <h2>계발자 주문 페이지</h2>
+
     <p>계발자에서 치킨을 주문하고자 하시는 분은 하단에 주문 내역을 추가하여 주시기 바랍니다.</p>
+
     <div id="toolbar">
         <button id="button" class="btn btn-default">주문하기</button>
     </div>
     <table id="table"
+           data-toggle="table"
            data-toolbar="#toolbar"
            class="table table-striped"
-           datasrc="/json/orders.json">
+           datasrc="./json/orders.json">
         <thead>
         <tr>
             <th data-field="datetime">주문일시</th>
@@ -34,6 +37,35 @@
             <th data-field="order">주문내용</th>
         </tr>
         </thead>
+        <tbody>
+        <div>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    <input type="text" id='name0' name='name0' placeholder='Name' class="form-control"/>
+                </td>
+                <td>
+                    <input type="text" id='address0' name='address0' placeholder='Address' class="form-control"/>
+                </td>
+                <td>
+                    <input type="text" id='cellphone0' name='cellphone0' placeholder='Cellphone' class="form-control"/>
+                </td>
+                <td>
+                    <input type="text" id='order0' name='order0' placeholder='Order' class="form-control"/>
+                </td>
+            </tr>
+        </div>
+        <c:forEach var="order" items="${orders}">
+            <tr>
+                <td>${order.datetime}</td>
+                <td>${order.name}</td>
+                <td>${order.address}</td>
+                <td>${order.cellphone}</td>
+                <td>${order.order}</td>
+            </tr>
+        </c:forEach>
+        </tbody>
     </table>
 
 </div>
@@ -42,15 +74,18 @@
 
     $(function () {
         $button.click(function () {
-            var randomId = 100 + ~~(Math.random() * 100);
+            if($('#name0').val() == "" || $('#address0').val() == "" ||$('#cellphone0').val() == "" ||$('#order0').val() == "") {
+                return;
+            }
+            var d = new Date();
             $table.bootstrapTable('insertRow', {
                 index: 1,
                 row: {
-                    datetime: randomId,
-                    name: 'Item ' + randomId,
-                    address: 'Item ' + randomId,
-                    cellphone: 'Item ' + randomId,
-                    order: '$' + randomId
+                    datetime: d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds(),
+                    name: $('#name0').val(),
+                    address: $('#address0').val(),
+                    cellphone: $('#cellphone0').val(),
+                    order: $('#order0').val()
                 }
             });
         });
