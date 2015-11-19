@@ -35,8 +35,8 @@ configurations {
 dependencies {
     compile 'org.slf4j:slf4j-api'
     compile 'org.springframework.boot:spring-boot-starter-web'
-    compile 'javax.servlet:jstl:1.2'
 
+    providedRuntime 'javax.servlet:jstl:1.2'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper'
 }

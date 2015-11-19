@@ -34,7 +34,7 @@ public class WebMvcApplication extends SpringBootServletInitializer {
     }
 
     @Bean
-    public EmbeddedServletContainerCustomizer errorPagesConfiguration() {
+    public EmbeddedServletContainerCustomizer embeddedServletContainerCustomizer() {
         /**
          * 메인 프로젝트의 경로를 Root 로 잡기 때문에
          * Intellij 의 서브 모듈의 경우 Root 경로를 별도로 설정해 주어야 하며
