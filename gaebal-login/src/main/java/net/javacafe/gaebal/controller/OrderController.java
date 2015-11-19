@@ -1,4 +1,4 @@
-package gaebal.controller;
+package net.javacafe.gaebal.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,17 +26,11 @@ public class OrderController {
         orders.add(new Order("2015-11-28 13:23:42", "원번", "서울시 서초구 서초동", "010-3984-9292" ,"양념 1 마리 후라이드 1마리 콜라 1.5l 1개"));
         orders.add(new Order("2015-11-28 13:21:23", "장돈건", "서울시 용산구 용산동", "010-9876-1234" ,"양념 1 마리, 맥주 3000cc"));
         orders.add(new Order("2015-11-28 13:01:11", "혼길돈", "서울시 강남구 삼성동", "010-1111-8282" ,"반반 1 마리, 콜라 1.5l 1개"));
-
-
-
-
-
     }
 
     @RequestMapping(value = "/order", method = RequestMethod.GET)
-    public ModelAndView hello() {
+    public ModelAndView order() {
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("order");
         mav.addObject("orders", orders);
         return mav;
     }

@@ -1,4 +1,4 @@
-package gaebal;
+package net.javacafe.gaebal;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -21,7 +21,7 @@ public class WebMvcApplication extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(WebMvcApplication.class);
+        return application.sources(WebMvcApplication.class, WebSecurityConfig.class);
     }
 
     public static void main(String[] args) {
@@ -34,7 +34,7 @@ public class WebMvcApplication extends SpringBootServletInitializer {
     }
 
     @Bean
-    public EmbeddedServletContainerCustomizer errorPagesConfiguration() {
+    public EmbeddedServletContainerCustomizer embeddedServletContainerCustomizer() {
         /**
          * 메인 프로젝트의 경로를 Root 로 잡기 때문에
          * Intellij 의 서브 모듈의 경우 Root 경로를 별도로 설정해 주어야 하며
@@ -43,6 +43,6 @@ public class WebMvcApplication extends SpringBootServletInitializer {
          * 만약 이러한 Root 설정이 어려울 경우 gradle bootRun 으로 Spring Boot 를 시작할 수 있으나 Intellij 상에서 terminate 가 안되므로
          * 별도의 Console 에서 gradle bootRun 후에 Ctrl + C 를 이용하여 Terminate 할 것을 권장한다.
          */
-        return factory -> factory.setDocumentRoot(new File("gaebal-base/src/main/webapp"));
+        return factory -> factory.setDocumentRoot(new File("gaebal-login/src/main/webapp"));
     }
 }
