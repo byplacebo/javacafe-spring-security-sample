@@ -1,5 +1,7 @@
 package net.javacafe.gaebal.controller;
 
+import net.javacafe.gaebal.security.UserToOrderDetails;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,7 +32,9 @@ public class OrderController {
     public ModelAndView order(Principal principal) {
         ModelAndView mav = new ModelAndView();
         mav.addObject("orders", orders);
-        mav.addObject("name", principal.getName());
+        UserToOrderDetails u = ((UserToOrderDetails) ((UsernamePasswordAuthenticationToken) principal).getPrincipal());
+        mav.addObject("user", u);
+        mav.addObject("name", u.getName());
         return mav;
     }
 

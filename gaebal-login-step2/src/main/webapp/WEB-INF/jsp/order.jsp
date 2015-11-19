@@ -43,13 +43,13 @@
                 <td>
                 </td>
                 <td>
-                    <input type="text" id='name0' name='name0' placeholder='${name}' disabled value='${name}' class="form-control"/>
+                    <input type="text" id='name0' name='name0' placeholder='${user.name}' disabled value='${user.name}' class="form-control"/>
                 </td>
                 <td>
-                    <input type="text" id='address0' name='address0' placeholder='Address' class="form-control"/>
+                    <input type="text" id='address0' name='address0' placeholder='${user.address}' disabled value='${user.address}' class="form-control"/>
                 </td>
                 <td>
-                    <input type="text" id='cellphone0' name='cellphone0' placeholder='Cellphone' class="form-control"/>
+                    <input type="text" id='cellphone0' name='cellphone0' placeholder='${user.cellphone}' disabled value='${user.cellphone}' class="form-control"/>
                 </td>
                 <td>
                     <input type="text" id='order0' name='order0' placeholder='Order' class="form-control"/>
@@ -71,10 +71,9 @@
 </div>
 <script>
     var $table = $('#table'), $button = $('#button');
-
     $(function () {
         $button.click(function () {
-            if($('#name0').val() == "" || $('#address0').val() == "" ||$('#cellphone0').val() == "" ||$('#order0').val() == "") {
+            if ($('#name0').val() == "" || $('#address0').val() == "" || $('#cellphone0').val() == "" || $('#order0').val() == "") {
                 return;
             }
             var d = new Date();
@@ -82,9 +81,9 @@
                 index: 1,
                 row: {
                     datetime: d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds(),
-                    name: '${name}',
-                    address: $('#address0').val(),
-                    cellphone: $('#cellphone0').val(),
+                    name: '${user.name}',
+                    address: '${user.address}',
+                    cellphone: '${user.cellphone}',
                     order: $('#order0').val()
                 }
             });
