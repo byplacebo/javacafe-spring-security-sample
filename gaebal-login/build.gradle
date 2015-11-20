@@ -36,8 +36,8 @@ dependencies {
     compile 'org.slf4j:slf4j-api'
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile  'org.springframework.boot:spring-boot-starter-security'
-    compile 'javax.servlet:jstl'
 
+    compile 'javax.servlet:jstl'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper'
 }
