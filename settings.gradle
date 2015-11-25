@@ -5,3 +5,5 @@ include 'hello-spring-boot'
 include 'gaebal-base'
 include 'gaebal-login'
 include 'gaebal-login-step2'
+include 'gaebal-password'
+
