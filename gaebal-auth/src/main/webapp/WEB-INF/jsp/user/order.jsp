@@ -22,6 +22,7 @@
 
     <div id="toolbar">
         <button id="button" class="btn btn-default">주문하기</button>
+        <a href="/logout" class="btn btn-default">로그아웃</a>
     </div>
     <table id="table"
            data-toggle="table"
